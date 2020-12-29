@@ -158,7 +158,8 @@ export function fromCSV (csvTextString: string, config?: ICSVOptions) {
         columnNames = config.columnNames;
     }
     else {
-        columnNames = rows.shift();
+        columnNames = rows.shift()
+        columnNames = columnNames && columnNames.map(String); // Column names must be string
     }
 
     return new DataFrame<number, any>({
